@@ -105,11 +105,21 @@
             align-items: center;
         }
 
+        .logo-link { display: inline-block; }
+
         .logo-img {
-            width: 200px;
-            height: auto;
-            margin-right: 15px;
+            height: 100px;
+            width: auto;
+            margin-right: 20px;
             object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .logo-link:hover .logo-img,
+        .logo-link:focus .logo-img {
+            transform: translateY(-3px) scale(1.03);
+            opacity: 0.95;
         }
 
         .logo-text {
@@ -1783,10 +1793,13 @@
                 });
             });
 
-            // Fermer le menu mobile quand on clique no logo (leva para #accueil)
+            // Fermer le menu mobile et scrollear quando o logo for clicado (leva para #accueil)
             const logoLink = document.querySelector('.logo-link');
             if (logoLink) {
-                logoLink.addEventListener('click', function() {
+                logoLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href') || '#accueil';
+
                     if (navMenu && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
                         navMenu.addEventListener('transitionend', function cleanup() {
@@ -1794,7 +1807,12 @@
                                 navMenu.style.top = '';
                             }
                             navMenu.removeEventListener('transitionend', cleanup);
+                            // After menu closed, scroll
+                            scrollToSection(targetId);
                         });
+                    } else {
+                        // If menu not open, scroll immediately
+                        scrollToSection(targetId);
                     }
                 });
             }
@@ -1869,38 +1887,41 @@
                 });
             }
 
+            // Helper to smooth scroll to a section with header offset
+            function scrollToSection(targetId) {
+                if (!targetId || targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+
+                // Fermer le menu mobile si ouvert
+                if (typeof navMenu !== 'undefined' && navMenu) navMenu.classList.remove('active');
+
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const extraSpacing = 16; // espace supplémentaire entre header et section
+                const offset = headerHeight + extraSpacing;
+
+                const targetPosition = window.pageYOffset + targetElement.getBoundingClientRect().top - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Accessibility: focus target after scroll
+                setTimeout(() => {
+                    if (typeof targetElement.focus === 'function') {
+                        targetElement.setAttribute('tabindex', '-1');
+                        targetElement.focus();
+                    }
+                }, 600);
+            }
+
             // Scroll fluide pour les liens d'ancrage (offset dynamique pour header fixe)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Fermer le menu mobile si ouvert
-                        if (typeof navMenu !== 'undefined' && navMenu) navMenu.classList.remove('active');
-
-                        // Calculer offset en fonction de la hauteur du header (dynamique)
-                        const header = document.querySelector('header');
-                        const headerHeight = header ? header.offsetHeight : 0;
-                        const extraSpacing = 16; // espace supplémentaire entre header et section
-                        const offset = headerHeight + extraSpacing;
-
-                        const targetPosition = window.pageYOffset + targetElement.getBoundingClientRect().top - offset;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-
-                        // Pour l'accessibilité, donner le focus à l'élément cible après la navigation
-                        setTimeout(() => {
-                            if (typeof targetElement.focus === 'function') {
-                                targetElement.setAttribute('tabindex', '-1');
-                                targetElement.focus();
-                            }
-                        }, 600);
-                    }
+                    scrollToSection(targetId);
                 });
             });
         });
