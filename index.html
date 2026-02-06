@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Très&Net - Entreprise de nettoyage écologique à Marseille. Services résidentiels, privés et professionnels avec produits biodégradables et certifiés.">
+    <meta name="keywords" content="nettoyage écologique, nettoyage Marseille, produits écologiques, nettoyage à domicile, nettoyage entreprise, Marseille, écologique, durable, santé, environnement">
+    <meta name="author" content="Très&Net">
+    <title>Très&Net - Nettoyage Écologique à Marseille | On fait le ménage, pas la tête</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --secondary-green: #27ae60;
+            --light-green: #d5f5e3;
+            --dark-green: #1e8449;
+            --primary-blue: #3498db;
+            --light-blue: #d6eaf8;
+            --dark-blue: #2874a6;
+            --light-gray: #f8f9fa;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            margin-bottom: -20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 200px;
+            height: auto;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--dark-green);
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-switcher.desktop-only { display: flex; }
+        .language-switcher.mobile-only { display: flex; gap: 8px; margin-left: 80px;}
+        .nav-lang-mobile { display: none; }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 10px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            color: var(--primary-green);
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher.desktop-only { display: none; }
+            .nav-lang-mobile { display: block; margin-top: 10px; }
+            .nav-lang-mobile .lang-btn { padding: 10px 12px; background: rgba(0,0,0,0.03); border-radius: 6px; }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 140px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--dark-gray);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+
+        .service-content ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-content ul li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-content ul li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--primary-green);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--dark-green);
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+
+        .benefits {
+            background-color: var(--light-blue);
+            padding: 80px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--dark-green);
+        }
+
+        .about-values {
+            margin-top: 30px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .value-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .team {
+            margin-top: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--light-green);
+            opacity: 0.5;
+        }
+
+        .testimonial-text {
+            padding-left: 40px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-blue);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .contact-map {
+            height: 300px;
+            background-color: var(--light-blue);
+            border-radius: 10px;
+            margin-top: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-green);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                padding: 130px 0 80px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Ensure anchor targets are not hidden behind the fixed header */
+        section[id] {
+            scroll-margin-top: 140px;
+        }
+
+        @media (max-width: 768px) {
+            section[id] {
+                scroll-margin-top: 170px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- IMPORTANT: Remplacez cette image par votre fichier Tres&NetMenage.jpeg -->
+                <img src="/Tres&NetMenage.png" alt="Très&Net Logo" class="logo-img">
+                
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="nav-link" data-lang="menu_accueil">Accueil</a></li>
+                <li><a href="#services" class="nav-link" data-lang="menu_services">Services</a></li>
+                <li><a href="#produits" class="nav-link" data-lang="menu_produits">Produits</a></li>
+                <li><a href="#a-propos" class="nav-link" data-lang="menu_a_propos">À Propos</a></li>
+                <li><a href="#temoignages" class="nav-link" data-lang="menu_temoignages">Témoignages</a></li>
+                <li><a href="#contact" class="nav-link" data-lang="menu_contact">Contact</a></li>
+                <li class="nav-lang-mobile">
+                    <div class="language-switcher mobile-only">
+                        <button class="lang-btn active" data-lang="fr" title="Français" aria-label="Français">🇫🇷 FR</button>
+                        <button class="lang-btn" data-lang="pt" title="Português" aria-label="Português">🇵🇹 PT</button>
+                        <button class="lang-btn" data-lang="en" title="English" aria-label="English">🇬🇧 EN</button>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="language-switcher desktop-only">
+                <button class="lang-btn active" data-lang="fr" title="Français" aria-label="Français">🇫🇷 FR</button>
+                <button class="lang-btn" data-lang="pt" title="Português" aria-label="Português">🇵🇹 PT</button>
+                <button class="lang-btn" data-lang="en" title="English" aria-label="English">🇬🇧 EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1 data-lang="hero_titre">Nettoyage Écologique à Marseille</h1>
+            <p data-lang="hero_sous_titre">Découvrez nos services de nettoyage respectueux de l'environnement et de votre santé. Des solutions durables pour un intérieur propre et sain.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn" data-lang="hero_cta_1">Demander un devis gratuit</a>
+                <a href="#services" class="btn btn-outline" data-lang="hero_cta_2">Découvrir nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="services_titre">Nos Services de Nettoyage</h2>
+                <p data-lang="services_sous_titre">Des solutions adaptées à tous vos besoins de nettoyage</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="service_1_titre">Résidentiel</h3>
+                        <p data-lang="service_1_description">Nettoyage régulier ou ponctuel de votre domicile pour un environnement sain et accueillant.</p>
+                        <ul>
+                            <li data-lang="service_1_item_1">Appartements et maisons</li>
+                            <li data-lang="service_1_item_2">Nettoyage après rénovation</li>
+                            <li data-lang="service_1_item_3">Nettoyage de printemps</li>
+                            <li data-lang="service_1_item_4">Nettoyage avant emménagement</li>
+                        </ul>
+                        <p><strong data-lang="service_frequence">Fréquence :</strong> <span data-lang="service_frequence_detail">Hebdomadaire, bi-hebdomadaire ou ponctuel</span></p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="service_2_titre">Privé</h3>
+                        <p data-lang="service_2_description">Services spécialisés pour les particuliers lors d'événements ou de changements.</p>
+                        <ul>
+                            <li data-lang="service_2_item_1">Nettoyage après événements</li>
+                            <li data-lang="service_2_item_2">Nettoyage avant état des lieux</li>
+                            <li data-lang="service_2_item_3">Nettoyage de vitres</li>
+                            <li data-lang="service_2_item_4">Nettoyage de tapis</li>
+                        </ul>
+                        <p><strong data-lang="service_frequence">Fréquence :</strong> <span data-lang="service_frequence_detail">Ponctuel ou occasionnel</span></p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-lang="service_3_titre">Entreprise</h3>
+                        <p data-lang="service_3_description">Solutions de nettoyage pour les espaces professionnels.</p>
+                        <ul>
+                            <li data-lang="service_3_item_1">Bureaux et espaces de travail</li>
+                            <li data-lang="service_3_item_2">Commerces et boutiques</li>
+                            <li data-lang="service_3_item_3">Espaces communs d'immeubles</li>
+                            <li data-lang="service_3_item_4">Nettoyage industriel</li>
+                        </ul>
+                        <p><strong data-lang="service_frequence">Fréquence :</strong> <span data-lang="service_frequence_detail">Quotidien, hebdomadaire ou personnalisé</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products section" id="produits">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="produits_titre">Nos Produits Écologiques</h2>
+                <p data-lang="produits_sous_titre">Des solutions naturelles pour un nettoyage efficace et respectueux</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 data-lang="produit_1_titre">Vinaigre Blanc</h3>
+                        <p data-lang="produit_1_description">Désinfectant naturel et dégraissant puissant. Parfait pour les surfaces, les vitres et pour éliminer les odeurs.</p>
+                        <p><strong data-lang="produit_avantage">Avantages :</strong></p>
+                        <ul>
+                            <li data-lang="produit_1_avantage_1">100% biodégradable</li>
+                            <li data-lang="produit_1_avantage_2">Sans produits chimiques</li>
+                            <li data-lang="produit_1_avantage_3">Efficace contre les bactéries</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 data-lang="produit_2_titre">Bicarbonate de Soude</h3>
+                        <p data-lang="produit_2_description">Détachant et désodorisant naturel. Idéal pour nettoyer les surfaces poreuses et éliminer les mauvaises odeurs.</p>
+                        <p><strong data-lang="produit_avantage">Avantages :</strong></p>
+                        <ul>
+                            <li data-lang="produit_2_avantage_1">Non toxique pour les enfants</li>
+                            <li data-lang="produit_2_avantage_2">Polyvalent et économique</li>
+                            <li data-lang="produit_2_avantage_3">Agit comme abrasif doux</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 data-lang="produit_3_titre">Huiles Essentielles</h3>
+                        <p data-lang="produit_3_description">Lavande, Tea Tree et citron pour une aromathérapie naturelle et des propriétés antibactériennes.</p>
+                        <p><strong data-lang="produit_avantage">Avantages :</strong></p>
+                        <ul>
+                            <li data-lang="produit_3_avantage_1">Parfum naturel sans synthèse</li>
+                            <li data-lang="produit_3_avantage_2">Action désinfectante</li>
+                            <li data-lang="produit_3_avantage_3">Effet bien-être</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; text-align: center;">
+                <h3 data-lang="produits_supplementaires" style="margin-bottom: 30px;">Autres Méthodes et Produits</h3>
+                <div class="products-grid">
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <i class="fas fa-soap"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 data-lang="produit_4_titre">Détergents Écologiques Certifiés</h3>
+                            <p data-lang="produit_4_description">Pour sols, vitres et cuisines. Certifiés écologiques et sans substances nocives.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 data-lang="produit_5_titre">Chiffons et Éponges Réutilisables</h3>
+                            <p data-lang="produit_5_description">Réduction des déchets avec des accessoires durables et lavables.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="product-content">
+                            <h3 data-lang="produit_6_titre">Nettoyage à la Vapeur</h3>
+                            <p data-lang="produit_6_description">Méthode écologique sans produits chimiques pour une hygiénisation profonde.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="avantages_titre">Nos Avantages Écologiques</h2>
+                <p data-lang="avantages_sous_titre">Choisir Très&Net, c'est opter pour une approche responsable</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 data-lang="avantage_1_titre">Respect de l'Environnement</h3>
+                    <p data-lang="avantage_1_description">Produits biodégradables qui ne polluent pas les eaux et préservent la biodiversité.</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 data-lang="avantage_2_titre">Santé Préservée</h3>
+                    <p data-lang="avantage_2_description">Réduction de l'exposition aux substances toxiques pour les enfants, les animaux et vous-même.</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 data-lang="avantage_3_titre">Air Intérieur Plus Sain</h3>
+                    <p data-lang="avantage_3_description">Élimination des COV (composés organiques volatils) pour un air intérieur de meilleure qualité.</p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3 data-lang="avantage_4_titre">Développement Durable</h3>
+                    <p data-lang="avantage_4_description">Utilisation de méthodes et produits durables, emballages recyclables et réduction des déchets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="a-propos">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="a_propos_titre">À Propos de Très&Net</h2>
+                <p data-lang="a_propos_sous_titre">Notre engagement pour un nettoyage écologique et responsable</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-lang="a_propos_description_1">Fondée en 2020, Très&Net est née de la passion pour l'environnement et le bien-être des personnes. Notre mission est de fournir des services de nettoyage exceptionnels sans compromettre la santé de nos clients ni celle de notre planète.</p>
+                    <p data-lang="a_propos_description_2">À Marseille, nous nous engageons à utiliser uniquement des produits écologiques, biodégradables et certifiés, garantissant un nettoyage en profondeur tout en respectant l'environnement.</p>
+                    
+                    <div class="about-values">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 data-lang="valeur_1_titre">Durabilité</h4>
+                                <p data-lang="valeur_1_description">Engagement envers des pratiques respectueuses de l'environnement</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4 data-lang="valeur_2_titre">Responsabilité</h4>
+                                <p data-lang="valeur_2_description">Transparence et intégrité dans toutes nos actions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <h4 data-lang="valeur_3_titre">Excellence</h4>
+                                <p data-lang="valeur_3_description">Qualité irréprochable de nos services et produits</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team">
+                    <h3 data-lang="equipe_titre">Rencontrez Notre Équipe</h3>
+                    <p data-lang="equipe_description">Des professionnels passionnés et formés aux méthodes de nettoyage écologique</p>
+                    
+                    <div class="team-grid">
+                        <!-- Team Member 1 -->
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="/maycon.png" alt="Maycon Bernardes">
+                            </div>
+                            <h4 data-lang="membre_1_nom">Maycon Bernardes</h4>
+                            <p data-lang="membre_1_poste">Fondateur & Directeur</p>
+                        </div>
+                        
+                        <!-- Team Member 2 -->
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="/alexandre.png" alt="Alexandre Ben Hamou">
+                            </div>
+                            <h4 data-lang="membre_2_nom">Alexandre Ben Hamou</h4>
+                            <p data-lang="membre_2_poste">Co-fondateur </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="temoignages">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="temoignages_titre">Ce Que Disent Nos Clients</h2>
+                <p data-lang="temoignages_sous_titre">Découvrez les avis de ceux qui ont essayé nos services</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p data-lang="temoignage_1_texte">"Très&Net a transformé mon quotidien ! Leur service de nettoyage résidentiel est exceptionnel. Les produits qu'ils utilisent laissent ma maison propre et sentent merveilleusement bon sans produits chimiques agressifs. Je recommande vivement !"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="temoignage_1_auteur">Marie Durand</h4>
+                            <p data-lang="temoignage_poste">Cliente résidentielle, Marseille</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p data-lang="temoignage_2_texte">"Nous utilisons Très&Net pour notre bureau depuis plus d'un an. Leur service professionnel et leur engagement écologique correspondent parfaitement à nos valeurs d'entreprise. L'équipe est ponctuelle, minutieuse et toujours prête à adapter leur service à nos besoins."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="temoignage_2_auteur">Jean Martin</h4>
+                            <p data-lang="temoignage_poste">Client professionnel, Lyon</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p data-lang="temoignage_3_texte">"Après notre déménagement, nous avions besoin d'un nettoyage complet. Très&Net a fait un travail remarquable, en utilisant uniquement des produits naturels. Notre nouvelle maison sentait bon et était impeccable. Merci pour votre professionnalisme !"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4 data-lang="temoignage_3_auteur">Pierre et Julie</h4>
+                            <p data-lang="temoignage_poste">Clients privés, Aix-en-Provence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-lang="contact_titre">Contactez-Nous</h2>
+                <p data-lang="contact_sous_titre">Demandez un devis gratuit ou posez-nous vos questions</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-lang="form_nom">Nom complet</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang="form_email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-lang="form_telephone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service" data-lang="form_service">Service intéressé</label>
+                            <select id="service" class="form-control">
+                                <option value="" data-lang="form_service_option">Sélectionnez un service</option>
+                                <option value="residential" data-lang="service_1_titre">Résidentiel</option>
+                                <option value="private" data-lang="service_2_titre">Privé</option>
+                                <option value="business" data-lang="service_3_titre">Entreprise</option>
+                                <option value="other" data-lang="form_service_autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang="form_message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-lang="form_envoyer">Envoyer le message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 data-lang="contact_info_titre">Nos Coordonnées</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 data-lang="contact_adresse">Adresse</h4>
+                            <p>123 Rue de la République<br>13002 Marseille, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 data-lang="contact_telephone">Téléphone</h4>
+                            <p>+33 4 91 00 00 00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 data-lang="contact_email">Email</h4>
+                            <p>contact@tresnet-marseille.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4 data-lang="contact_whatsapp">WhatsApp</h4>
+                            <p>+33 6 12 34 56 78</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-contact">
+                        <a href="tel:+33491000000" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> <span data-lang="contact_appeler">Appeler</span>
+                        </a>
+                        <a href="https://wa.me/33612345678" class="btn btn-outline">
+                            <i class="fab fa-whatsapp"></i> <span data-lang="contact_whatsapp_btn">WhatsApp</span>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-map">
+                        <!-- Intégration Google Maps - Remplacez par votre embed réel -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2654.592283254879!2d5.369776315674896!3d43.29616497916521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b9c3e5c5c5c5%3A0x123456789abcdef!2sMarseille%2C%20France!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Très&Net</div>
+                    <p data-lang="footer_description">Votre partenaire de confiance pour un nettoyage écologique à Marseille et ses environs. Nous engageons à préserver votre santé et l'environnement.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-title" data-lang="footer_liens">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#accueil" data-lang="menu_accueil">Accueil</a></li>
+                        <li><a href="#services" data-lang="menu_services">Services</a></li>
+                        <li><a href="#produits" data-lang="menu_produits">Produits</a></li>
+                        <li><a href="#a-propos" data-lang="menu_a_propos">À Propos</a></li>
+                        <li><a href="#temoignages" data-lang="menu_temoignages">Témoignages</a></li>
+                        <li><a href="#contact" data-lang="menu_contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact-col">
+                    <h4 class="footer-title" data-lang="footer_contact">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Rue de la République, 13002 Marseille</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+33 4 91 00 00 00</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@tresnet-marseille.fr</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+33 6 12 34 56 78</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Très&Net. <span data-lang="footer_droits">Tous droits réservés.</span></p>
+                <p data-lang="footer_seo">Nettoyage écologique Marseille | Nettoyage à domicile écologique | Produits écologiques certifiés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Système de traduction
+        const translations = {
+            fr: {
+                slogan: "On fait le ménage, pas la tête",
+                menu_accueil: "Accueil",
+                menu_services: "Services",
+                menu_produits: "Produits",
+                menu_a_propos: "À Propos",
+                menu_temoignages: "Témoignages",
+                menu_contact: "Contact",
+                hero_titre: "Nettoyage Écologique à Marseille",
+                hero_sous_titre: "Découvrez nos services de nettoyage respectueux de l'environnement et de votre santé. Des solutions durables pour un intérieur propre et sain.",
+                hero_cta_1: "Demander un devis gratuit",
+                hero_cta_2: "Découvrir nos services",
+                services_titre: "Nos Services de Nettoyage",
+                services_sous_titre: "Des solutions adaptées à tous vos besoins de nettoyage",
+                service_1_titre: "Résidentiel",
+                service_1_description: "Nettoyage régulier ou ponctuel de votre domicile pour un environnement sain et accueillant.",
+                service_1_item_1: "Appartements et maisons",
+                service_1_item_2: "Nettoyage après rénovation",
+                service_1_item_3: "Nettoyage de printemps",
+                service_1_item_4: "Nettoyage avant emménagement",
+                service_2_titre: "Privé",
+                service_2_description: "Services spécialisés pour les particuliers lors d'événements ou de changements.",
+                service_2_item_1: "Nettoyage après événements",
+                service_2_item_2: "Nettoyage avant état des lieux",
+                service_2_item_3: "Nettoyage de vitres",
+                service_2_item_4: "Nettoyage de tapis",
+                service_3_titre: "Entreprise",
+                service_3_description: "Solutions de nettoyage pour les espaces professionnels.",
+                service_3_item_1: "Bureaux et espaces de travail",
+                service_3_item_2: "Commerces et boutiques",
+                service_3_item_3: "Espaces communs d'immeubles",
+                service_3_item_4: "Nettoyage industriel",
+                service_frequence: "Fréquence :",
+                service_frequence_detail: "Hebdomadaire, bi-hebdomadaire ou ponctuel",
+                produits_titre: "Nos Produits Écologiques",
+                produits_sous_titre: "Des solutions naturelles pour un nettoyage efficace et respectueux",
+                produit_1_titre: "Vinaigre Blanc",
+                produit_1_description: "Désinfectant naturel et dégraissant puissant. Parfait pour les surfaces, les vitres et pour éliminer les odeurs.",
+                produit_avantage: "Avantages :",
+                produit_1_avantage_1: "100% biodégradable",
+                produit_1_avantage_2: "Sans produits chimiques",
+                produit_1_avantage_3: "Efficace contre les bactéries",
+                produit_2_titre: "Bicarbonate de Soude",
+                produit_2_description: "Détachant et désodorisant naturel. Idéal pour nettoyer les surfaces poreuses et éliminer les mauvaises odeurs.",
+                produit_2_avantage_1: "Non toxique pour les enfants",
+                produit_2_avantage_2: "Polyvalent et économique",
+                produit_2_avantage_3: "Agit comme abrasif doux",
+                produit_3_titre: "Huiles Essentielles",
+                produit_3_description: "Lavande, Tea Tree et citron pour une aromathérapie naturelle et des propriétés antibactériennes.",
+                produit_3_avantage_1: "Parfum naturel sans synthèse",
+                produit_3_avantage_2: "Action désinfectante",
+                produit_3_avantage_3: "Effet bien-être",
+                produits_supplementaires: "Autres Méthodes et Produits",
+                produit_4_titre: "Détergents Écologiques Certifiés",
+                produit_4_description: "Pour sols, vitres et cuisines. Certifiés écologiques et sans substances nocives.",
+                produit_5_titre: "Chiffons et Éponges Réutilisables",
+                produit_5_description: "Réduction des déchets avec des accessoires durables et lavables.",
+                produit_6_titre: "Nettoyage à la Vapeur",
+                produit_6_description: "Méthode écologique sans produits chimiques pour une hygiénisation profonde.",
+                avantages_titre: "Nos Avantages Écologiques",
+                avantages_sous_titre: "Choisir Très&Net, c'est opter pour une approche responsable",
+                avantage_1_titre: "Respect de l'Environnement",
+                avantage_1_description: "Produits biodégradables qui ne polluent pas les eaux et préservent la biodiversité.",
+                avantage_2_titre: "Santé Préservée",
+                avantage_2_description: "Réduction de l'exposition aux substances toxiques pour les enfants, les animaux et vous-même.",
+                avantage_3_titre: "Air Intérieur Plus Sain",
+                avantage_3_description: "Élimination des COV (composés organiques volatils) pour un air intérieur de meilleure qualité.",
+                avantage_4_titre: "Développement Durable",
+                avantage_4_description: "Utilisation de méthodes et produits durables, emballages recyclables et réduction des déchets.",
+                a_propos_titre: "À Propos de Très&Net",
+                a_propos_sous_titre: "Notre engagement pour un nettoyage écologique et responsable",
+                a_propos_description_1: "Fondée en 2020, Très&Net est née de la passion pour l'environnement et le bien-être des personnes. Notre mission est de fournir des services de nettoyage exceptionnels sans compromettre la santé de nos clients ni celle de notre planète.",
+                a_propos_description_2: "À Marseille, nous nous engageons à utiliser uniquement des produits écologiques, biodégradables et certifiés, garantissant un nettoyage en profondeur tout en respectant l'environnement.",
+                valeur_1_titre: "Durabilité",
+                valeur_1_description: "Engagement envers des pratiques respectueuses de l'environnement",
+                valeur_2_titre: "Responsabilité",
+                valeur_2_description: "Transparence et intégrité dans toutes nos actions",
+                valeur_3_titre: "Excellence",
+                valeur_3_description: "Qualité irréprochable de nos services et produits",
+                equipe_titre: "Rencontrez Notre Équipe",
+                equipe_description: "Des professionnels passionnés et formés aux méthodes de nettoyage écologique",
+                membre_1_nom: "Sophie Laurent",
+                membre_1_poste: "Fondatrice & Directrice",
+                membre_2_nom: "Thomas Dubois",
+                membre_2_poste: "Responsable Technique",
+                temoignages_titre: "Ce Que Disent Nos Clients",
+                temoignages_sous_titre: "Découvrez les avis de ceux qui ont essayé nos services",
+                temoignage_1_texte: "Très&Net a transformé mon quotidien ! Leur service de nettoyage résidentiel est exceptionnel. Les produits qu'ils utilisent laissent ma maison propre et sentent merveilleusement bon sans produits chimiques agressifs. Je recommande vivement !",
+                temoignage_1_auteur: "Marie Durand",
+                temoignage_2_texte: "Nous utilisons Très&Net pour notre bureau depuis plus d'un an. Leur service professionnel et leur engagement écologique correspondent parfaitement à nos valeurs d'entreprise. L'équipe est ponctuelle, minutieuse et toujours prête à adapter leur service à nos besoins.",
+                temoignage_2_auteur: "Jean Martin",
+                temoignage_3_texte: "Après notre déménagement, nous avions besoin d'un nettoyage complet. Très&Net a fait un travail remarquable, en utilisant uniquement des produits naturels. Notre nouvelle maison sentait bon et était impeccable. Merci pour votre professionnalisme !",
+                temoignage_3_auteur: "Pierre et Julie",
+                temoignage_poste: "Client",
+                contact_titre: "Contactez-Nous",
+                contact_sous_titre: "Demandez un devis gratuit ou posez-nous vos questions",
+                form_nom: "Nom complet",
+                form_email: "Email",
+                form_telephone: "Téléphone",
+                form_service: "Service intéressé",
+                form_service_option: "Sélectionnez un service",
+                form_service_autre: "Autre",
+                form_message: "Message",
+                form_envoyer: "Envoyer le message",
+                contact_info_titre: "Nos Coordonnées",
+                contact_adresse: "Adresse",
+                contact_telephone: "Téléphone",
+                contact_email: "Email",
+                contact_whatsapp: "WhatsApp",
+                contact_appeler: "Appeler",
+                contact_whatsapp_btn: "WhatsApp",
+                footer_description: "Votre partenaire de confiance pour un nettoyage écologique à Marseille et ses environs. Nous engageons à préserver votre santé et l'environnement.",
+                footer_liens: "Liens Rapides",
+                footer_contact: "Contact",
+                footer_droits: "Tous droits réservés.",
+                footer_seo: "Nettoyage écologique Marseille | Nettoyage à domicile écologique | Produits écologiques certifiés"
+            },
+            pt: {
+                slogan: "Nós fazemos a limpeza, não a cabeça",
+                menu_accueil: "Início",
+                menu_services: "Serviços",
+                menu_produtos: "Produtos",
+                menu_sobre: "Sobre",
+                menu_depoimentos: "Depoimentos",
+                menu_contato: "Contato",
+                hero_titre: "Limpeza Ecológica em Marselha",
+                hero_sub_titulo: "Descubra nossos serviços de limpeza respeitadores do meio ambiente e da sua saúde. Soluções sustentáveis para um interior limpo e saudável.",
+                hero_cta_1: "Solicite um orçamento gratuito",
+                hero_cta_2: "Conheça nossos serviços",
+                services_titre: "Nossos Serviços de Limpeza",
+                services_sous_titre: "Soluções adaptadas a todas as suas necessidades de limpeza",
+                service_1_titre: "Residencial",
+                service_1_description: "Limpeza regular ou pontual do seu domicílio para um ambiente saudável e acolhedor.",
+                service_1_item_1: "Apartamentos e casas",
+                service_1_item_2: "Limpeza após renovação",
+                service_1_item_3: "Limpeza de primavera",
+                service_1_item_4: "Limpeza antes de mudança",
+                service_2_titre: "Privado",
+                service_2_description: "Serviços especializados para particulares durante eventos ou mudanças.",
+                service_2_item_1: "Limpeza após eventos",
+                service_2_item_2: "Limpeza antes da inspeção",
+                service_2_item_3: "Limpeza de vidros",
+                service_2_item_4: "Limpeza de tapetes",
+                service_3_titre: "Empresarial",
+                service_3_description: "Soluções de limpeza para espaços profissionais.",
+                service_3_item_1: "Escritórios e espaços de trabalho",
+                service_3_item_2: "Lojas e comércios",
+                service_3_item_3: "Áreas comuns de edifícios",
+                service_3_item_4: "Limpeza industrial",
+                service_frequence: "Frequência:",
+                service_frequence_detail: "Semanal, quinzenal ou pontual",
+                produits_titre: "Nossos Produtos Ecológicos",
+                produits_sous_titre: "Soluções naturais para uma limpeza eficaz e respeitosa",
+                produit_1_titre: "Vinagre Branco",
+                produit_1_description: "Desinfetante natural e desengordurante poderoso. Perfeito para superfícies, vidros e eliminação de odores.",
+                produit_avantage: "Vantagens:",
+                produit_1_avantage_1: "100% biodegradável",
+                produit_1_avantage_2: "Sem produtos químicos",
+                produit_1_avantage_3: "Eficaz contra bactérias",
+                produit_2_titre: "Bicarbonato de Sódio",
+                produit_2_description: "Manchas e desodorizante natural. Ideal para limpar superfícies porosas e eliminar maus cheiros.",
+                produit_2_avantage_1: "Não tóxico para crianças",
+                produit_2_avantage_2: "Versátil e econômico",
+                produit_2_avantage_3: "Age como abrasivo suave",
+                produit_3_titre: "Óleos Essenciais",
+                produit_3_description: "Lavanda, Tea Tree e limão para aromaterapia natural e propriedades antibacterianas.",
+                produit_3_avantage_1: "Perfume natural sem síntese",
+                produit_3_avantage_2: "Ação desinfetante",
+                produit_3_avantage_3: "Efeito bem-estar",
+                produits_supplementaires: "Outros Métodos e Produtos",
+                produit_4_titre: "Detergentes Ecológicos Certificados",
+                produit_4_description: "Para pisos, vidros e cozinhas. Certificados ecológicos e sem substâncias nocivas.",
+                produit_5_titre: "Paninhos e Esponjas Reutilizáveis",
+                produit_5_description: "Redução de resíduos com acessórios duráveis e laváveis.",
+                produit_6_titre: "Limpeza a Vapor",
+                produit_6_description: "Método ecológico sem produtos químicos para higienização profunda.",
+                avantages_titre: "Nossas Vantagens Ecológicas",
+                avantages_sous_titre: "Escolher Très&Net é optar por uma abordagem responsável",
+                avantage_1_titre: "Respeito pelo Meio Ambiente",
+                avantage_1_description: "Produtos biodegradáveis que não poluem as águas e preservam a biodiversidade.",
+                avantage_2_titre: "Saúde Preservada",
+                avantage_2_description: "Redução da exposição a substâncias tóxicas para crianças, animais e você mesmo.",
+                avantage_3_titre: "Ar Interno Mais Saudável",
+                avantage_3_description: "Eliminação de COV (compostos orgânicos voláteis) para um ar interno de melhor qualidade.",
+                avantage_4_titre: "Desenvolvimento Sustentável",
+                avantage_4_description: "Uso de métodos e produtos sustentáveis, embalagens recicláveis e redução de resíduos.",
+                a_propos_titre: "Sobre a Très&Net",
+                a_propos_sous_titre: "Nosso compromisso com a limpeza ecológica e responsável",
+                a_propos_description_1: "Fundada em 2020, Très&Net nasceu da paixão pelo meio ambiente e pelo bem-estar das pessoas. Nossa missão é fornecer serviços de limpeza excepcionais sem comprometer a saúde de nossos clientes nem a do nosso planeta.",
+                a_propos_description_2: "Em Marselha, comprometemo-nos a usar apenas produtos ecológicos, biodegradáveis e certificados, garantindo uma limpeza profunda enquanto respeitamos o meio ambiente.",
+                valeur_1_titre: "Sustentabilidade",
+                valeur_1_description: "Compromisso com práticas respeitosas do meio ambiente",
+                valeur_2_titre: "Responsabilidade",
+                valeur_2_description: "Transparência e integridade em todas as nossas ações",
+                valeur_3_titre: "Excelência",
+                valeur_3_description: "Qualidade irrepreensível de nossos serviços e produtos",
+                equipe_titre: "Conheça Nossa Equipe",
+                equipe_description: "Profissionais apaixonados e treinados em métodos de limpeza ecológica",
+                membre_1_nom: "Sophie Laurent",
+                membre_1_poste: "Fundadora & Diretora",
+                membre_2_nom: "Thomas Dubois",
+                membre_2_poste: "Responsável Técnico",
+                temoignages_titre: "O Que Dizem Nossos Clientes",
+                temoignages_sous_titre: "Descubra as opiniões de quem experimentou nossos serviços",
+                temoignage_1_texte: "Très&Net transformou meu dia a dia! Seu serviço de limpeza residencial é excepcional. Os produtos que usam deixam minha casa limpa e cheiram maravilhosamente bem sem produtos químicos agressivos. Recomendo vivamente!",
+                temoignage_1_auteur: "Marie Durand",
+                temoignage_2_texte: "Usamos a Très&Net para nosso escritório há mais de um ano. Seu serviço profissional e seu compromisso ecológico correspondem perfeitamente aos valores da nossa empresa. A equipe é pontual, meticulosa e sempre pronta para adaptar seu serviço às nossas necessidades.",
+                temoignage_2_auteur: "Jean Martin",
+                temoignage_3_texte: "Depois da nossa mudança, precisávamos de uma limpeza completa. A Très&Net fez um trabalho notável, usando apenas produtos naturais. Nossa nova casa cheirava bem e estava impecável. Obrigado pelo profissionalismo!",
+                temoignage_3_auteur: "Pierre e Julie",
+                temoignage_poste: "Cliente",
+                contact_titre: "Entre em Contato",
+                contact_sous_titre: "Solicite um orçamento gratuito ou faça suas perguntas",
+                form_nom: "Nome completo",
+                form_email: "Email",
+                form_telephone: "Telefone",
+                form_service: "Serviço de interesse",
+                form_service_option: "Selecione um serviço",
+                form_service_autre: "Outro",
+                form_message: "Mensagem",
+                form_envoyer: "Enviar mensagem",
+                contact_info_titre: "Nossas Informações de Contato",
+                contact_adresse: "Endereço",
+                contact_telephone: "Telefone",
+                contact_email: "Email",
+                contact_whatsapp: "WhatsApp",
+                contact_appeler: "Ligar",
+                contact_whatsapp_btn: "WhatsApp",
+                footer_description: "Seu parceiro de confiança para limpeza ecológica em Marselha e arredores. Comprometemo-nos a preservar sua saúde e o meio ambiente.",
+                footer_liens: "Links Rápidos",
+                footer_contact: "Contato",
+                footer_droits: "Todos os direitos reservados.",
+                footer_seo: "Limpeza ecológica Marselha | Limpeza residencial ecológica | Produtos ecológicos certificados"
+            },
+            en: {
+                slogan: "We do the cleaning, not the headache",
+                menu_accueil: "Home",
+                menu_services: "Services",
+                menu_produtos: "Products",
+                menu_sobre: "About",
+                menu_depoimentos: "Testimonials",
+                menu_contato: "Contact",
+                hero_titre: "Ecological Cleaning in Marseille",
+                hero_sub_titulo: "Discover our environmentally friendly and health-conscious cleaning services. Sustainable solutions for a clean and healthy interior.",
+                hero_cta_1: "Request a free quote",
+                hero_cta_2: "Discover our services",
+                services_titre: "Our Cleaning Services",
+                services_sous_titre: "Solutions adapted to all your cleaning needs",
+                service_1_titre: "Residential",
+                service_1_description: "Regular or occasional cleaning of your home for a healthy and welcoming environment.",
+                service_1_item_1: "Apartments and houses",
+                service_1_item_2: "Post-renovation cleaning",
+                service_1_item_3: "Spring cleaning",
+                service_1_item_4: "Pre-move-in cleaning",
+                service_2_titre: "Private",
+                service_2_description: "Specialized services for individuals during events or moves.",
+                service_2_item_1: "Post-event cleaning",
+                service_2_item_2: "Pre-inspection cleaning",
+                service_2_item_3: "Window cleaning",
+                service_2_item_4: "Carpet cleaning",
+                service_3_titre: "Business",
+                service_3_description: "Cleaning solutions for professional spaces.",
+                service_3_item_1: "Offices and workspaces",
+                service_3_item_2: "Stores and shops",
+                service_3_item_3: "Common areas of buildings",
+                service_3_item_4: "Industrial cleaning",
+                service_frequence: "Frequency:",
+                service_frequence_detail: "Weekly, bi-weekly, or one-time",
+                produits_titre: "Our Ecological Products",
+                produits_sous_titre: "Natural solutions for effective and respectful cleaning",
+                produit_1_titre: "White Vinegar",
+                produit_1_description: "Powerful natural disinfectant and degreaser. Perfect for surfaces, windows, and odor elimination.",
+                produit_avantage: "Benefits:",
+                produit_1_avantage_1: "100% biodegradable",
+                produit_1_avantage_2: "Chemical-free",
+                produit_1_avantage_3: "Effective against bacteria",
+                produit_2_titre: "Baking Soda",
+                produit_2_description: "Natural stain remover and deodorizer. Ideal for cleaning porous surfaces and eliminating bad odors.",
+                produit_2_avantage_1: "Non-toxic for children",
+                produit_2_avantage_2: "Versatile and economical",
+                produit_2_avantage_3: "Acts as a gentle abrasive",
+                produit_3_titre: "Essential Oils",
+                produit_3_description: "Lavender, Tea Tree, and lemon for natural aromatherapy and antibacterial properties.",
+                produit_3_avantage_1: "Natural fragrance without synthesis",
+                produit_3_avantage_2: "Disinfecting action",
+                produit_3_avantage_3: "Well-being effect",
+                produits_supplementaires: "Additional Methods and Products",
+                produit_4_titre: "Certified Ecological Detergents",
+                produit_4_description: "For floors, windows, and kitchens. Ecologically certified and free of harmful substances.",
+                produit_5_titre: "Reusable Cloths and Sponges",
+                produit_5_description: "Waste reduction with durable and washable accessories.",
+                produit_6_titre: "Steam Cleaning",
+                produit_6_description: "Chemical-free ecological method for deep sanitization.",
+                avantages_titre: "Our Ecological Advantages",
+                avantages_sous_titre: "Choosing Très&Net means opting for a responsible approach",
+                avantage_1_titre: "Environmental Respect",
+                avantage_1_description: "Biodegradable products that do not pollute water and preserve biodiversity.",
+                avantage_2_titre: "Health Preservation",
+                avantage_2_description: "Reduced exposure to toxic substances for children, pets, and yourself.",
+                avantage_3_titre: "Healthier Indoor Air",
+                avantage_3_description: "Elimination of VOCs (volatile organic compounds) for better indoor air quality.",
+                avantage_4_titre: "Sustainable Development",
+                avantage_4_description: "Use of sustainable methods and products, recyclable packaging, and waste reduction.",
+                a_propos_titre: "About Très&Net",
+                a_propos_sous_titre: "Our commitment to ecological and responsible cleaning",
+                a_propos_description_1: "Founded in 2020, Très&Net was born from a passion for the environment and people's well-being. Our mission is to provide exceptional cleaning services without compromising our clients' health or that of our planet.",
+                a_propos_description_2: "In Marseille, we are committed to using only ecological, biodegradable, and certified products, guaranteeing deep cleaning while respecting the environment.",
+                valeur_1_titre: "Sustainability",
+                valeur_1_description: "Commitment to environmentally friendly practices",
+                valeur_2_titre: "Responsibility",
+                valeur_2_description: "Transparency and integrity in all our actions",
+                valeur_3_titre: "Excellence",
+                valeur_3_description: "Impeccable quality of our services and products",
+                equipe_titre: "Meet Our Team",
+                equipe_description: "Passionate professionals trained in ecological cleaning methods",
+                membre_1_nom: "Sophie Laurent",
+                membre_1_poste: "Founder & Director",
+                membre_2_nom: "Thomas Dubois",
+                membre_2_poste: "Technical Manager",
+                temoignages_titre: "What Our Clients Say",
+                temoignages_sous_titre: "Discover reviews from those who have tried our services",
+                temoignage_1_texte: "Très&Net transformed my daily life! Their residential cleaning service is exceptional. The products they use leave my house clean and smelling wonderfully good without harsh chemicals. I highly recommend!",
+                temoignage_1_auteur: "Marie Durand",
+                temoignage_2_texte: "We have been using Très&Net for our office for over a year. Their professional service and ecological commitment perfectly align with our company values. The team is punctual, meticulous, and always ready to adapt their service to our needs.",
+                temoignage_2_auteur: "Jean Martin",
+                temoignage_3_texte: "After our move, we needed a thorough cleaning. Très&Net did a remarkable job, using only natural products. Our new house smelled good and was spotless. Thank you for your professionalism!",
+                temoignage_3_auteur: "Pierre and Julie",
+                temoignage_poste: "Client",
+                contact_titre: "Contact Us",
+                contact_sous_titre: "Request a free quote or ask us your questions",
+                form_nom: "Full name",
+                form_email: "Email",
+                form_telephone: "Phone",
+                form_service: "Service of interest",
+                form_service_option: "Select a service",
+                form_service_autre: "Other",
+                form_message: "Message",
+                form_envoyer: "Send message",
+                contact_info_titre: "Our Contact Information",
+                contact_adresse: "Address",
+                contact_telephone: "Phone",
+                contact_email: "Email",
+                contact_whatsapp: "WhatsApp",
+                contact_appeler: "Call",
+                contact_whatsapp_btn: "WhatsApp",
+                footer_description: "Your trusted partner for ecological cleaning in Marseille and surrounding areas. We are committed to preserving your health and the environment.",
+                footer_liens: "Quick Links",
+                footer_contact: "Contact",
+                footer_droits: "All rights reserved.",
+                footer_seo: "Ecological cleaning Marseille | Residential ecological cleaning | Certified ecological products"
+            }
+        };
+
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            // Mettre à jour les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Mettre à jour tous les éléments avec data-lang
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Mettre à jour l'attribut lang du html
+            document.documentElement.lang = lang;
+        }
+
+        // Initialiser la langue par défaut (français)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestionnaire pour les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+
+            // Gestionnaire pour le menu mobile
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Fermer le menu mobile quand on clique sur un lien
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Gestionnaire pour le formulaire de contact
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+                    contactForm.reset();
+                });
+            }
+
+            // Scroll fluide pour les liens d'ancrage (offset dynamique pour header fixe)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Fermer le menu mobile si ouvert
+                        if (typeof navMenu !== 'undefined' && navMenu) navMenu.classList.remove('active');
+
+                        // Calculer offset en fonction de la hauteur du header (dynamique)
+                        const header = document.querySelector('header');
+                        const headerHeight = header ? header.offsetHeight : 0;
+                        const extraSpacing = 16; // espace supplémentaire entre header et section
+                        const offset = headerHeight + extraSpacing;
+
+                        const targetPosition = window.pageYOffset + targetElement.getBoundingClientRect().top - offset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Pour l'accessibilité, donner le focus à l'élément cible après la navigation
+                        setTimeout(() => {
+                            if (typeof targetElement.focus === 'function') {
+                                targetElement.setAttribute('tabindex', '-1');
+                                targetElement.focus();
+                            }
+                        }, 600);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
