@@ -1,0 +1,164 @@
+📌 1) Mentions Légales (Aviso Legal)
+
+Este é o documento obrigatório para qualquer site profissional na França (Loi pour la Confiance dans l’Économie Numérique). Ele identifica formalmente quem é o responsável pelo site, o hospedador, e outras informações legais.
+
+MENTIONS LÉGALES – TRES&NET – Société de Nettoyage
+
+1. ÉDITEUR DU SITE  
+Éditeur : TRES&NET SARL  
+Forme juridique : SARL (Société à responsabilité limitée)  
+Capital social : [Capital social]  
+Adresse du siège social : [Adresse complète, ex. 12 Rue de la Propreté, 13000 Marseille, France]  
+Numéro SIRET : [Numéro SIRET]  
+RCS : [Ville de RCS]  
+TVA Intracommunautaire : FR[Numéro TVA si applicable]  
+Responsable de publication : [Nom du directeur de la publication]  
+Contact : [email professionnel] – Tel : [Numéro]
+
+2. HÉBERGEMENT  
+Hébergeur du site : [Ex.: OVHcloud] –  
+Adresse : [Endereço completo do provedor] – France – Tel : [Telefone do provedor]
+
+3. PROPRIÉTÉ INTELLECTUELLE  
+Tous les contenus (textes, images, logos, vidéos) présents sur ce site sont protégés par les lois françaises et internationales de propriété intellectuelle. Toute reproduction totale ou partielle est strictement interdite sans autorisation écrite préalable.
+
+4. DONNÉES PERSONNELLES  
+Les traitements des données personnelles sont détaillés dans notre Politique de Confidentialité accessible ici : [lien].
+
+5. DROIT APPLICABLE  
+Le présent site est régi par la loi française. En cas de litige, les tribunaux français seront seuls compétents.
+
+Dernière mise à jour : [Date].
+
+📌 2) Politique de Confidentialité (Privacy Policy)
+
+Documento obrigatório por RGPD/GDPR quando o site coleta dados pessoais (contatos webform, email, cookies, analytics, etc.). Ele informa quais dados são coletados, por que e como são usados, e os direitos do usuário.
+
+POLITIQUE DE CONFIDENTIALITÉ – TRES&NET
+
+1. CONTEXTE  
+Conformément au RGPD (Règlement Général sur la Protection des Données), cette politique explique comment TRES&NET SARL collecte, utilise, partage et protège vos données personnelles lorsque vous utilisez ce site.
+
+2. DONNÉES COLLECTÉES  
+• Identifiants (nom, prénom)  
+• Coordonnées (email, téléphone)  
+• Données de navigation (adresse IP, pages visitées, durée)  
+• Cookies et traceurs
+
+3. FINALITÉS DU TRAITEMENT  
+• Réponse aux demandes de contact  
+• Amélioration du site  
+• Statistiques de fréquentation
+
+4. BASES LÉGALES  
+Les traitements sont basés sur :  
+• Votre consentement (formulaire, newsletter)  
+• L’exécution d’un contrat / réponse à votre demande  
+• L’intérêt légitime pour l’analyse de trafic (anonymisé).
+
+5. PARTAGE DES DONNÉES  
+Les données ne sont pas vendues à des tiers. Elles peuvent être partagées avec des prestataires techniques (hébergeur, outils analytiques).
+
+6. DURÉE DE CONSERVATION  
+• Données de contact : 3 ans après le dernier contact  
+• Données de navigation : 13 mois maximum (conformément aux bonnes pratiques CNIL)
+
+7. VOS DROITS  
+Vous disposez des droits suivants :  
+• Accès  
+• Rectification  
+• Effacement  
+• Opposition  
+• Portabilité  
+• Restriction
+
+Pour exercer vos droits ou toute question :  
+Email : [adresse email RGPD] – Tel : [téléphone].
+
+Dernière mise à jour : [Date]
+
+📌 3) Politique de Gestion des Cookies
+
+Se o site usa cookies não essenciais (analytics, publicitários, pixels), é necessário informar e obter consentimento antes da ativação. Abaixo um texto para página + banner.
+
+POLITIQUE COOKIES – TRES&NET
+
+1. DÉFINITION  
+Un cookie est un petit fichier déposé sur votre terminal lors de la visite d’un site. Certains sont nécessaires, d’autres non essentiels et soumis à consentement.
+
+2. TYPES DE COOKIES UTILISÉS  
+• Fonctionnels (nécessaires)  
+• Statistiques / analytiques  
+• Publicitaires / réseaux sociaux
+
+3. CONSENTEMENT  
+Avant dépôt de cookies non essentiels, vous devez exprimer votre consentement via le bandeau Cookies.
+
+4. GESTION DES COOKIES  
+Vous pouvez à tout moment modifier vos choix via les paramètres de cookies ou les préférences de votre navigateur.
+
+5. DURÉE DE CONSERVATION  
+Chaque cookie a une durée propre affichée dans le tableau ci-dessus.
+
+Pour en savoir plus, consultez https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser
+
+📌 4) Conditions Générales de Vente (CGV) – Serviços de Limpeza
+
+Este documento normatiza a relação comercial com o cliente, incluindo condições de prestação, pagamento, cancelamento, responsabilidades, etc. Ele protege você e o cliente em qualquer disputa.
+
+CONDITIONS GÉNÉRALES DE VENTE – PRESTATIONS DE SERVICES
+
+Entre les soussignés :
+
+TRES&NET SARL, RCS [Ville], SIRET [n°], dont le siège social est situé [adresse], ci‑après « le Prestataire »,
+
+Et le Client, ci‑après « le Client ».
+
+1. OBJET  
+Les présentes CGV ont pour objet de définir les conditions de vente des prestations de nettoyage proposées par le Prestataire.
+
+2. SERVICES  
+La description complète des services est disponible sur le site ou sur devis.
+
+3. ACCEPTATION  
+Le fait de valider un devis, un contrat ou toute commande implique l’acceptation sans réserve des présentes CGV.
+
+4. PRIX & PAIEMENT  
+• Prix exprimés en euros, toutes taxes comprises  
+• Paiement : [modalité – ex. 30% à la commande, solde à la fin]  
+• Retard de paiement : pénalités légales applicables
+
+5. EXÉCUTION DES PRESTATIONS  
+• Délais, planning convenus contractuellement  
+• Accès au site doit être garanti par le Client
+
+6. RESPONSABILITÉ  
+• Le Prestataire est responsable des dommages directs causés du fait de sa prestation.  
+• Responsabilité limitée aux montants facturés
+
+7. ANNULATION / RÉSILIATION  
+• Toute annulation doit être notifiée par écrit  
+• Indemnités applicables selon délai
+
+8. DONNÉES PERSONNELLES  
+Les données collectées sont utilisées conformément à la Politique de Confidentialité.
+
+9. LOI APPLICABLE / JURIDICTION  
+Les présentes CGV sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents.
+
+Fait à [Ville], le [date].
+Signature (Client & Prestataire)
+
+📌 5) Links Rápidos para Serviços e Contato (para Footer)
+
+No footer, inclua:
+
+<ul>
+  <li><a href="/mentions-legales">Mentions légales</a></li>
+  <li><a href="/politique-de-confidentialite">Politique de confidentialité</a></li>
+  <li><a href="/politique-cookies">Cookies</a></li>
+  <li><a href="/cgvs">Conditions Générales de Vente (CGV)</a></li>
+  <li><a href="/services">Nos Services</a></li>
+  <li><a href="/contact">Contact & Adresse</a></li>
+  <li><a href="https://facebook.com/...">Facebook</a></li> <!-- se aplicável -->
+</ul>
