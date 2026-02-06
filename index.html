@@ -727,20 +727,21 @@
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
-                top: 80px;
-                left: -100%;
+                left: 0;
+                top: -100%; /* hidden above viewport */
+                transform: translateY(-100%);
                 flex-direction: column;
                 background-color: var(--white);
                 width: 100%;
                 text-align: center;
-                transition: 0.3s;
+                transition: transform 0.28s ease;
                 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
                 padding: 20px 0;
                 z-index: 1002; /* above backdrop */
             }
 
             .nav-menu.active {
-                left: 0;
+                transform: translateY(0);
             }
 
             .mobile-backdrop {
@@ -1766,18 +1767,32 @@
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', function() {
                     const willOpen = !navMenu.classList.contains('active');
-                    navMenu.classList.toggle('active');
+                    const header = document.querySelector('header');
+                    const headerHeight = header ? header.offsetHeight : 0;
 
-                    if (mobileBackdrop) {
-                        if (willOpen) {
-                            // set top of backdrop to header height to avoid covering header
-                            const header = document.querySelector('header');
-                            const headerHeight = header ? header.offsetHeight : 0;
+                    if (willOpen) {
+                        // set top for nav and backdrop and open (menu slides down into view)
+                        navMenu.style.top = headerHeight + 'px';
+                        // force reflow so transition runs reliably
+                        navMenu.getBoundingClientRect();
+                        navMenu.classList.add('active');
+
+                        if (mobileBackdrop) {
                             mobileBackdrop.style.top = headerHeight + 'px';
                             mobileBackdrop.classList.add('active');
-                        } else {
-                            mobileBackdrop.classList.remove('active');
                         }
+                    } else {
+                        // close (menu slides up out of view)
+                        navMenu.classList.remove('active');
+                        if (mobileBackdrop) mobileBackdrop.classList.remove('active');
+
+                        // after transition, remove inline top to reset
+                        navMenu.addEventListener('transitionend', function cleanup() {
+                            if (!navMenu.classList.contains('active')) {
+                                navMenu.style.top = '';
+                            }
+                            navMenu.removeEventListener('transitionend', cleanup);
+                        });
                     }
                 });
             }
@@ -1787,6 +1802,13 @@
                 link.addEventListener('click', function() {
                     navMenu.classList.remove('active');
                     if (mobileBackdrop) mobileBackdrop.classList.remove('active');
+
+                    navMenu.addEventListener('transitionend', function cleanup() {
+                        if (!navMenu.classList.contains('active')) {
+                            navMenu.style.top = '';
+                        }
+                        navMenu.removeEventListener('transitionend', cleanup);
+                    });
                 });
             });
 
@@ -1795,6 +1817,13 @@
                 mobileBackdrop.addEventListener('click', function() {
                     if (navMenu) navMenu.classList.remove('active');
                     mobileBackdrop.classList.remove('active');
+
+                    navMenu.addEventListener('transitionend', function cleanup() {
+                        if (!navMenu.classList.contains('active')) {
+                            navMenu.style.top = '';
+                        }
+                        navMenu.removeEventListener('transitionend', cleanup);
+                    });
                 });
             }
 
