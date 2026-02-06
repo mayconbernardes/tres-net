@@ -1751,6 +1751,31 @@
                 });
             });
 
+            // Fermer le menu mobile quand on clique en dehors (mobile)
+            document.addEventListener('click', function(e) {
+                try {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        const target = e.target;
+                        // Si o clique não foi no menu nem no botão do menu, fechar
+                        if (!navMenu.contains(target) && !(mobileMenuBtn && mobileMenuBtn.contains(target))) {
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                } catch (err) {
+                    // silencieux: prevenire erreurs dans des environnements inattendus
+                    // console.error(err);
+                }
+            });
+
+            // Fermer le menu mobile quand on appuie sur ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+
             // Gestionnaire pour le formulaire de contact
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
