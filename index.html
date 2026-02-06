@@ -794,6 +794,16 @@
                 scroll-margin-top: 170px;
             }
         }
+
+        /* Legal modal styles */
+        #legal-modal { display:none; position:fixed; inset:0; z-index:2000; align-items:flex-start; justify-content:center; padding-top:20px; }
+        #legal-modal.open { display:flex; }
+        #legal-modal .modal { background:var(--white); width:92%; max-width:920px; max-height:80vh; overflow:auto; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.15); transform:translateY(-10px); transition:transform 0.22s ease, opacity 0.22s ease; }
+        #legal-modal.open .modal { transform:translateY(0); }
+        #legal-modal .modal-header { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid #eee; }
+        #legal-modal .modal-body { padding:16px; color:var(--dark-gray); }
+        #legal-modal .modal-close { background:none; border:0; font-size:1.4rem; cursor:pointer; }
+        @media (max-width: 480px) { #legal-modal .modal { width:96%; margin:10px; } }
     </style>
 </head>
 <body>
@@ -1328,10 +1338,10 @@
                         <li><a href="#a-propos" data-lang="menu_a_propos">À Propos</a></li>
                         <li><a href="#temoignages" data-lang="menu_temoignages">Témoignages</a></li>
                         <li><a href="#contact" data-lang="menu_contact">Contact</a></li>
-                        <li><a href="/mentions-legales.html" target="_self">Mentions légales</a></li>
-                        <li><a href="/politique-de-confidentialite.html" target="_self">Politique de confidentialité</a></li>
-                        <li><a href="/politique-cookies.html" target="_self">Cookies</a></li>
-                        <li><a href="/cgvs.html" target="_self">Conditions Générales (CGV)</a></li>
+                        <li><a href="/mentions-legales.html" data-modal="/mentions-legales.html" data-lang="footer_mentions">Mentions légales</a></li>
+                        <li><a href="/politique-de-confidentialite.html" data-modal="/politique-de-confidentialite.html" data-lang="footer_privacy">Politique de confidentialité</a></li>
+                        <li><a href="/politique-cookies.html" data-modal="/politique-cookies.html" data-lang="footer_cookies">Cookies</a></li>
+                        <li><a href="/cgvs.html" data-modal="/cgvs.html" data-lang="footer_cgvs">Conditions Générales (CGV)</a></li>
                     </ul>
                 </div>
                 
@@ -1364,6 +1374,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Legal modal (content loaded dynamically from the legal pages) -->
+    <div id="legal-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+        <div class="modal" role="document">
+            <header class="modal-header">
+                <h2 id="legal-modal-title"></h2>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </header>
+            <div class="modal-body" id="legal-modal-body">
+                <!-- content will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <script>
         // Système de traduction
@@ -1483,7 +1506,14 @@
                 footer_liens: "Liens Rapides",
                 footer_contact: "Contact",
                 footer_droits: "Tous droits réservés.",
-                footer_seo: "Nettoyage écologique Marseille | Nettoyage à domicile écologique | Produits écologiques certifiés"
+                footer_seo: "Nettoyage écologique Marseille | Nettoyage à domicile écologique | Produits écologiques certifiés",
+                footer_mentions: "Mentions légales",
+                footer_privacy: "Politique de confidentialité",
+                footer_cookies: "Cookies",
+                footer_cgvs: "Conditions Générales",
+                modal_close: "Fermer",
+                modal_loading: "Chargement...",
+                modal_error: "Impossible de charger le contenu."
             },
             pt: {
                 slogan: "Nós fazemos a limpeza, não a cabeça",
@@ -1600,7 +1630,14 @@
                 footer_liens: "Links Rápidos",
                 footer_contact: "Contato",
                 footer_droits: "Todos os direitos reservados.",
-                footer_seo: "Limpeza ecológica Marselha | Limpeza residencial ecológica | Produtos ecológicos certificados"
+                footer_seo: "Limpeza ecológica Marselha | Limpeza residencial ecológica | Produtos ecológicos certificados",
+                footer_mentions: "Aviso legal",
+                footer_privacy: "Política de privacidade",
+                footer_cookies: "Cookies",
+                footer_cgvs: "Condições Gerais de Venda",
+                modal_close: "Fechar",
+                modal_loading: "Carregando...",
+                modal_error: "Não foi possível carregar o conteúdo."
             },
             en: {
                 slogan: "We do the cleaning, not the headache",
@@ -1717,12 +1754,21 @@
                 footer_liens: "Quick Links",
                 footer_contact: "Contact",
                 footer_droits: "All rights reserved.",
-                footer_seo: "Ecological cleaning Marseille | Residential ecological cleaning | Certified ecological products"
+                footer_seo: "Ecological cleaning Marseille | Residential ecological cleaning | Certified ecological products",
+                footer_mentions: "Legal notice",
+                footer_privacy: "Privacy policy",
+                footer_cookies: "Cookies",
+                footer_cgvs: "Terms & Conditions",
+                modal_close: "Close",
+                modal_loading: "Loading...",
+                modal_error: "Unable to load content."
             }
         };
 
         // Fonction pour changer la langue
         function changeLanguage(lang) {
+            // Track current language
+            window.currentLang = lang;
             // Mettre à jour les boutons de langue
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -1741,6 +1787,20 @@
 
             // Mettre à jour l'attribut lang du html
             document.documentElement.lang = lang;
+
+            // Si a modal legal estiver aberta, atualize seu título também
+            try {
+                const legalModal = document.getElementById('legal-modal');
+                if (legalModal && legalModal.classList.contains('open')) {
+                    const key = legalModal.dataset.currentKey;
+                    if (key && translations[lang] && translations[lang][key]) {
+                        const modalTitleEl = document.getElementById('legal-modal-title');
+                        if (modalTitleEl) modalTitleEl.textContent = translations[lang][key];
+                    }
+                }
+            } catch (e) {
+                // silencieux
+            }
         }
 
         // Initialiser la langue par défaut (français)
@@ -1927,6 +1987,74 @@
                     const targetId = this.getAttribute('href');
                     scrollToSection(targetId);
                 });
+            });
+
+            // --- Legal modal logic: load legal pages into modal and open ---
+            const legalModal = document.getElementById('legal-modal');
+            const modalTitleEl = document.getElementById('legal-modal-title');
+            const modalBodyEl = document.getElementById('legal-modal-body');
+            const modalCloseBtn = document.querySelector('#legal-modal .modal-close');
+
+            function openLegalModal(url, titleKey) {
+                const lang = window.currentLang || 'fr';
+                modalTitleEl.textContent = (translations[lang] && translations[lang][titleKey]) ? translations[lang][titleKey] : titleKey || '';
+                modalBodyEl.innerHTML = (translations[lang] && translations[lang].modal_loading) ? translations[lang].modal_loading : 'Loading...';
+
+                // remember current modal key for language updates
+                if (legalModal) legalModal.dataset.currentKey = titleKey || '';
+
+                // position modal below header
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                legalModal.style.paddingTop = (headerHeight + 12) + 'px';
+
+                legalModal.classList.add('open');
+                legalModal.setAttribute('aria-hidden', 'false');
+                if (modalCloseBtn) modalCloseBtn.focus();
+
+                fetch(url)
+                    .then(resp => {
+                        if (!resp.ok) throw new Error('Network response was not ok');
+                        return resp.text();
+                    })
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+                        const main = doc.querySelector('.container') || doc.querySelector('main') || doc.body;
+                        modalBodyEl.innerHTML = main ? main.innerHTML : html;
+                    })
+                    .catch(err => {
+                        modalBodyEl.innerHTML = (translations[window.currentLang] && translations[window.currentLang].modal_error) ? translations[window.currentLang].modal_error : 'Unable to load content.';
+                    });
+            }
+
+            function closeLegalModal() {
+                legalModal.classList.remove('open');
+                legalModal.setAttribute('aria-hidden', 'true');
+                modalBodyEl.innerHTML = '';
+            }
+
+            // Attach handlers for footer modal links
+            document.querySelectorAll('a[data-modal]').forEach(a => {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const url = a.getAttribute('data-modal');
+                    const key = a.getAttribute('data-lang') || '';
+                    openLegalModal(url, key);
+                });
+            });
+
+            // Close modal actions
+            if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeLegalModal);
+            if (legalModal) {
+                legalModal.addEventListener('click', function (e) {
+                    if (e.target === legalModal) closeLegalModal();
+                });
+            }
+            document.addEventListener('keydown', function (e) {
+                if ((e.key === 'Escape' || e.key === 'Esc') && legalModal && legalModal.classList.contains('open')) {
+                    closeLegalModal();
+                }
             });
         });
     </script>
