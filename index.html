@@ -744,24 +744,7 @@
                 transform: translateY(0);
             }
 
-            .mobile-backdrop {
-                display: none;
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0,0,0,0.25);
-                z-index: 1001;
-                opacity: 0;
-                transition: opacity 0.2s ease;
-                pointer-events: none;
-            }
 
-            .mobile-backdrop.active {
-                display: block;
-                opacity: 1;
-                pointer-events: auto;
-            }
 
             .nav-menu li {
                 margin: 15px 0;
@@ -840,9 +823,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Mobile backdrop to capture outside clicks -->
-    <div class="mobile-backdrop" aria-hidden="true"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
@@ -1762,8 +1742,6 @@
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('.nav-menu');
             
-            const mobileBackdrop = document.querySelector('.mobile-backdrop');
-
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', function() {
                     const willOpen = !navMenu.classList.contains('active');
@@ -1771,20 +1749,14 @@
                     const headerHeight = header ? header.offsetHeight : 0;
 
                     if (willOpen) {
-                        // set top for nav and backdrop and open (menu slides down into view)
+                        // open: place menu just below header and slide down
                         navMenu.style.top = headerHeight + 'px';
                         // force reflow so transition runs reliably
                         navMenu.getBoundingClientRect();
                         navMenu.classList.add('active');
-
-                        if (mobileBackdrop) {
-                            mobileBackdrop.style.top = headerHeight + 'px';
-                            mobileBackdrop.classList.add('active');
-                        }
                     } else {
-                        // close (menu slides up out of view)
+                        // close: slide up
                         navMenu.classList.remove('active');
-                        if (mobileBackdrop) mobileBackdrop.classList.remove('active');
 
                         // after transition, remove inline top to reset
                         navMenu.addEventListener('transitionend', function cleanup() {
@@ -1797,12 +1769,10 @@
                 });
             }
 
-            // Fermer le menu mobile quand on clique sur um link (nao precisa de click externo)
+            // Fermer le menu mobile quand on clique sur um link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', function() {
                     navMenu.classList.remove('active');
-                    if (mobileBackdrop) mobileBackdrop.classList.remove('active');
-
                     navMenu.addEventListener('transitionend', function cleanup() {
                         if (!navMenu.classList.contains('active')) {
                             navMenu.style.top = '';
@@ -1810,6 +1780,41 @@
                         navMenu.removeEventListener('transitionend', cleanup);
                     });
                 });
+            });
+
+            // Fermer o menu mobile quando clicar fora (sem backdrop)
+            document.addEventListener('click', function(e) {
+                try {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        const target = e.target;
+                        if (!navMenu.contains(target) && !(mobileMenuBtn && mobileMenuBtn.contains(target))) {
+                            navMenu.classList.remove('active');
+                            navMenu.addEventListener('transitionend', function cleanup() {
+                                if (!navMenu.classList.contains('active')) {
+                                    navMenu.style.top = '';
+                                }
+                                navMenu.removeEventListener('transitionend', cleanup);
+                            });
+                        }
+                    }
+                } catch (err) {
+                    // silencieux
+                }
+            });
+
+            // Fermer le menu mobile quand on appuie sur ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' || e.key === 'Esc') {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navMenu.addEventListener('transitionend', function cleanup() {
+                            if (!navMenu.classList.contains('active')) {
+                                navMenu.style.top = '';
+                            }
+                            navMenu.removeEventListener('transitionend', cleanup);
+                        });
+                    }
+                }
             });
 
             // Fechar quando clicar no backdrop
