@@ -736,10 +736,30 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
                 padding: 20px 0;
+                z-index: 1002; /* above backdrop */
             }
 
             .nav-menu.active {
                 left: 0;
+            }
+
+            .mobile-backdrop {
+                display: none;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.25);
+                z-index: 1001;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                pointer-events: none;
+            }
+
+            .mobile-backdrop.active {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
             }
 
             .nav-menu li {
@@ -819,6 +839,9 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile backdrop to capture outside clicks -->
+    <div class="mobile-backdrop" aria-hidden="true"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
@@ -1738,40 +1761,49 @@
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navMenu = document.querySelector('.nav-menu');
             
+            const mobileBackdrop = document.querySelector('.mobile-backdrop');
+
             if (mobileMenuBtn) {
                 mobileMenuBtn.addEventListener('click', function() {
+                    const willOpen = !navMenu.classList.contains('active');
                     navMenu.classList.toggle('active');
+
+                    if (mobileBackdrop) {
+                        if (willOpen) {
+                            // set top of backdrop to header height to avoid covering header
+                            const header = document.querySelector('header');
+                            const headerHeight = header ? header.offsetHeight : 0;
+                            mobileBackdrop.style.top = headerHeight + 'px';
+                            mobileBackdrop.classList.add('active');
+                        } else {
+                            mobileBackdrop.classList.remove('active');
+                        }
+                    }
                 });
             }
 
-            // Fermer le menu mobile quand on clique sur un lien
+            // Fermer le menu mobile quand on clique sur um link (nao precisa de click externo)
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', function() {
                     navMenu.classList.remove('active');
+                    if (mobileBackdrop) mobileBackdrop.classList.remove('active');
                 });
             });
 
-            // Fermer le menu mobile quand on clique en dehors (mobile)
-            document.addEventListener('click', function(e) {
-                try {
-                    if (navMenu && navMenu.classList.contains('active')) {
-                        const target = e.target;
-                        // Si o clique não foi no menu nem no botão do menu, fechar
-                        if (!navMenu.contains(target) && !(mobileMenuBtn && mobileMenuBtn.contains(target))) {
-                            navMenu.classList.remove('active');
-                        }
-                    }
-                } catch (err) {
-                    // silencieux: prevenire erreurs dans des environnements inattendus
-                    // console.error(err);
-                }
-            });
+            // Fechar quando clicar no backdrop
+            if (mobileBackdrop) {
+                mobileBackdrop.addEventListener('click', function() {
+                    if (navMenu) navMenu.classList.remove('active');
+                    mobileBackdrop.classList.remove('active');
+                });
+            }
 
             // Fermer le menu mobile quand on appuie sur ESC
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' || e.key === 'Esc') {
                     if (navMenu && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
+                        if (mobileBackdrop) mobileBackdrop.classList.remove('active');
                     }
                 }
             });
