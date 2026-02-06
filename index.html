@@ -792,9 +792,10 @@
         <div class="container header-container">
             <div class="logo">
                 <!-- IMPORTANT: Remplacez cette image par votre fichier Tres&NetMenage.png -->
-                <img src="img/Tres&NetMenage.png" alt="Très&Net Logo" class="logo-img">
-                
-            </div>
+                <a href="#accueil" class="logo-link" aria-label="Accueil">
+                    <img src="img/Tres&NetMenage.png" alt="Très&Net Logo" class="logo-img">
+                </a>
+            </div> 
             
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -1781,6 +1782,22 @@
                     });
                 });
             });
+
+            // Fermer le menu mobile quand on clique no logo (leva para #accueil)
+            const logoLink = document.querySelector('.logo-link');
+            if (logoLink) {
+                logoLink.addEventListener('click', function() {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navMenu.addEventListener('transitionend', function cleanup() {
+                            if (!navMenu.classList.contains('active')) {
+                                navMenu.style.top = '';
+                            }
+                            navMenu.removeEventListener('transitionend', cleanup);
+                        });
+                    }
+                });
+            }
 
             // Fermer o menu mobile quando clicar fora (sem backdrop)
             document.addEventListener('click', function(e) {
